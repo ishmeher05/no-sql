@@ -1,0 +1,5 @@
+CREATE KEYSPACE CI044 WITH replication = { 'class':"SimpleStrategy','replication':3};
+   ... use CI044
+   ... use CI044;
+   ... CREATE TABLE IF NOT EXISTS students( id UUID PRIMARY KEY, name TEXT, grades LIST <INT>);
+   ... 
