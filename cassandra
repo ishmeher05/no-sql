@@ -2,4 +2,25 @@ CREATE KEYSPACE CI044 WITH replication = { 'class':"SimpleStrategy','replication
    ... use CI044
    ... use CI044;
    ... CREATE TABLE IF NOT EXISTS students( id UUID PRIMARY KEY, name TEXT, grades LIST <INT>);
-   ... 
+
+*to update any grades in the table by adding one more grade use *
+UPDATE students SET grades = grades + [88]
+         ... WHERE id=1b0624dd-88fe-407f-be67-1f54704c5259;
+cqlsh:ci044> SELECT * FROM students;
+
+
+CREATE TABLE users(id UUID PRIMARY KEY , name TEXT, emails SET<TEXT>);
+cqlsh:ci044> INSERT INTO users( id, name, emails)
+         ... VALUES (uuid(),'Aman',{'aman12@example.com','amanwork@example.com'});
+cqlsh:ci044> INSERT INTO users( id, name, emails) VALUES (uuid(),'Kiya',{'kiya@example.com'});
+cqlsh:ci044> INSERT INTO users( id, name, emails) VALUES (uuid(),'Maya',{'maya1@example.com'});
+cqlsh:ci044> select * from users;
+
+
+
+MAP
+REATE TABLE employees( id UUID PRIMARY KEY, name TEXT , attributes MAP <TEXT,TEXT>);
+INSERT INTO employees( id, name, attributes) VALUES (uuid(),'Maya',{'address':'123 Main st','phone':'8765432109'});
+INSERT INTO employees( id, name, attributes) VALUES (uuid(),'Fred',{'address':'477 Oak st','phone':'8289311299'});
+INSERT INTO employees( id, name, attributes) VALUES (uuid(),'Jerry',{'address':'536 Park avenue st','phone':'989372124'});
+select * from employees
